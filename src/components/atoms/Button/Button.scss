@@ -1,0 +1,33 @@
+@import "../../../styles/variables";
+
+.button {
+  padding: 16px 32px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  background-color: $primary-color;
+  color: $primary-light-1;
+  border: 2px solid $primary-light-2;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 5%);
+  }
+
+  &.small {
+    line-height: 1.1;
+  }
+
+  &.medium {
+    padding: 20px 30px;
+    font-size: 1.7rem;
+    line-height: 1;
+  }
+
+  &.big {
+    padding: 28px 105px;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+}
