@@ -1,0 +1,14 @@
+// Button Styles
+.button {
+  padding: $spacing-unit * 1.5 $spacing-unit * 3;
+  font-size: 1rem;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}

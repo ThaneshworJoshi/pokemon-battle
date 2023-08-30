@@ -1,0 +1,25 @@
+// Reset default browser styles
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+// Set base font size and family
+body {
+  font-size: 16px;
+  font-family: $body-font;
+}
+
+// Global box-sizing
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

@@ -1,0 +1,10 @@
+// Centering a Flex Container
+@mixin center-vertically {
+  display: flex;
+  align-items: center;
+}
+
+@mixin center-horizontally {
+  display: flex;
+  justify-content: center;
+}
