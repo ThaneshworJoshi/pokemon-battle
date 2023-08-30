@@ -1,4 +1,4 @@
-import { LogoProps, NavItemsProps } from "@component/molecules";
+import { LogoProps, NavItemsProps } from "components";
 
 export interface HeaderProps {
     navData: NavItemsProps
