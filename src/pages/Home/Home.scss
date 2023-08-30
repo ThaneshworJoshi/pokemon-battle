@@ -1,0 +1,6 @@
+@import "../../styles/mixins";
+
+.home-container {
+  @include center-horizontally;
+  margin-top: 8.3rem;
+}
