@@ -1,0 +1,42 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.container {
+  margin-top: 4rem;
+}
+.battle {
+  max-width: 1280px;
+  margin: 0 auto;
+  &__title {
+    margin-bottom: 64px;
+    font-size: 40px;
+    font-weight: 400;
+    color: $white;
+    text-align: center;
+    line-height: 1;
+  }
+
+  &__box {
+    display: flex;
+    column-gap: 68px;
+    margin-bottom: 64px;
+  }
+
+  &__card-wrapper {
+    max-width: 519px;
+  }
+
+  &__vs-img {
+    align-self: flex-end;
+    margin-bottom: 80px;
+    width: 107px;
+  }
+
+  &__cta {
+    text-align: center;
+  }
+}
+
+.search {
+  margin-bottom: 24px;
+}
