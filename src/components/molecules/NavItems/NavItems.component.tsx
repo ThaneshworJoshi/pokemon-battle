@@ -7,20 +7,20 @@ export const NavItems: FC<NavItemsProps> = ({ itemList }) => {
   const { pathname } = useLocation();
 
   return (
-    <nav>
-      <ul className="nav-list">
+    <nav className="nav">
+      <ul className="nav__list">
         {itemList.map((item, index) => (
-          <li key={index} className="nav-item">
-            <NavLink to={item?.link} className="item-link">
+          <li key={index} className="nav__item">
+            <NavLink to={item?.link} className="nav__item-link">
               {pathname === item?.link && (
                 <img
                   src="./assets/ball.png"
                   alt="active-image-ball"
-                  className="item-image"
+                  className="nav__item-image"
                 />
               )}
               <span
-                className={`item-label ${
+                className={`nav__item-label ${
                   pathname === item?.link ? "active-item" : ""
                 }`}
               >
