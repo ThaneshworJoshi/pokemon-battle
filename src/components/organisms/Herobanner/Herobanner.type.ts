@@ -1,16 +1,16 @@
 export interface HerobannerProps {
-    caption: string
+  caption: string
+  title: string
+  description: string
+  ctaButton?: {
     title: string
-    description: string
-    ctaButton?: {
-        title: string;
-        link?: string;
-        target?: string;
-        tooltip?: string;
-        onClick?: () => void;
-    }
-    media: {
-        imageUrl: string
-        altText: string
-    }
+    link?: string
+    target?: string
+    tooltip?: string
+    onClick?: () => void
+  }
+  media: {
+    imageUrl: string
+    altText: string
+  }
 }

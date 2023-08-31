@@ -1,7 +1,7 @@
-type TButtonSize = 'small' | 'medium' | 'big';
+type TButtonSize = 'small' | 'medium' | 'big'
 
 export interface ButtonProps {
-    children: React.ReactNode
-    size?: TButtonSize
-    onClick?: () => void
+  children: React.ReactNode
+  size?: TButtonSize
+  onClick?: () => void
 }

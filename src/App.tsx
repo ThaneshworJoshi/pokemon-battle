@@ -1,15 +1,15 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import "./App.css";
-import { AppLayout } from "./common/components/layout";
-import { Battle, Home, List, History, Error } from "./pages";
-import { QueryClient, QueryClientProvider } from "react-query";
-import "./styles/main.scss";
+import './App.css'
+import { AppLayout } from './common/components/layout'
+import { Battle, Home, List, History, Error } from './pages'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import './styles/main.scss'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
-function App() {
+function App () {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -24,7 +24,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
-  );
+  )
 }
 
-export default App;
+export default App

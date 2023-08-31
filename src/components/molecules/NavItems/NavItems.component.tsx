@@ -1,10 +1,10 @@
-import React, { FC } from "react";
-import { NavItemsProps } from "./NavItems.type";
-import "./NavItems.scss";
-import { NavLink, useLocation } from "react-router-dom";
+import React, { type FC } from 'react'
+import { type NavItemsProps } from './NavItems.type'
+import './NavItems.scss'
+import { NavLink, useLocation } from 'react-router-dom'
 
 export const NavItems: FC<NavItemsProps> = ({ itemList }) => {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
 
   return (
     <nav className="nav">
@@ -21,7 +21,7 @@ export const NavItems: FC<NavItemsProps> = ({ itemList }) => {
               )}
               <span
                 className={`nav__item-label ${
-                  pathname === item?.link ? "active-item" : ""
+                  pathname === item?.link ? 'active-item' : ''
                 }`}
               >
                 {item.label}
@@ -31,7 +31,7 @@ export const NavItems: FC<NavItemsProps> = ({ itemList }) => {
         ))}
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default NavItems;
+export default NavItems

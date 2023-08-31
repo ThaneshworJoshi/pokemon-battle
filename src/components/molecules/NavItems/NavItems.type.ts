@@ -1,8 +1,8 @@
-type TNavItem = {
-    label: string
-    link: string
+interface TNavItem {
+  label: string
+  link: string
 }
 
 export interface NavItemsProps {
-    itemList: TNavItem[]
+  itemList: TNavItem[]
 }

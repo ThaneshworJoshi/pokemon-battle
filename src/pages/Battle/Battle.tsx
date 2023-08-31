@@ -13,7 +13,7 @@ const pokemons = [
   'Snorlax',
   'Mewtwo',
   'Gengar',
-  'Dragonite',
+  'Dragonite'
 ]
 
 const mockPokemon1 = {
@@ -23,8 +23,8 @@ const mockPokemon1 = {
   moves: ['Flash Cannon', 'Hyper Beam', 'Aqua Ring', 'Hydro Canon'],
   media: {
     imageUrl: './assets/pok1.png',
-    altText: 'alt-text',
-  },
+    altText: 'alt-text'
+  }
 }
 
 const mockPokemon2 = {
@@ -34,8 +34,8 @@ const mockPokemon2 = {
   moves: ['Razor Leaf', 'Seed Bomb', 'Solar Beam', 'Rock Smash'],
   media: {
     imageUrl: './assets/pok2.png',
-    altText: 'alt-text',
-  },
+    altText: 'alt-text'
+  }
 }
 export const Battle = () => {
   return (

@@ -1,13 +1,13 @@
-import React, { FC } from "react";
-import { BattleCardProps } from "./BattleCard.type";
-import "./BattleCard.scss";
+import React, { type FC } from 'react'
+import { type BattleCardProps } from './BattleCard.type'
+import './BattleCard.scss'
 
 export const BattleCard: FC<BattleCardProps> = ({
   name,
   type,
   hp,
   moves,
-  media,
+  media
 }) => {
   return (
     <div className="battle-card">
@@ -33,7 +33,7 @@ export const BattleCard: FC<BattleCardProps> = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BattleCard;
+export default BattleCard

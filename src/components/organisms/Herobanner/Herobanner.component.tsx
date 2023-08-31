@@ -1,14 +1,14 @@
-import React, { FC } from "react";
-import { HerobannerProps } from "./Herobanner.type";
-import { Button } from "components";
-import "./Herobanner.scss";
+import React, { type FC } from 'react'
+import { type HerobannerProps } from './Herobanner.type'
+import { Button } from 'components'
+import './Herobanner.scss'
 
 export const Herobanner: FC<HerobannerProps> = ({
   caption,
   title,
   description,
   ctaButton,
-  media,
+  media
 }) => {
   return (
     <div className="hero-banner">
@@ -30,7 +30,7 @@ export const Herobanner: FC<HerobannerProps> = ({
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Herobanner;
+export default Herobanner
