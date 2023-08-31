@@ -1,0 +1,109 @@
+@import '../../../styles/variables';
+
+.battle-history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $primary-light-1;
+  border-radius: 1rem;
+  padding: 0.75rem 1rem;
+  color: $white;
+
+  &__column {
+    display: flex;
+    align-items: center;
+
+    &--pokemon {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      padding: 0 2.5rem;
+      flex-basis: 500px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 60%;
+        background-color: $primary-light-1;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 60%;
+        background-color: $primary-light-1;
+      }
+    }
+  }
+
+  &__index {
+    display: inline-block;
+    padding-right: 0.6rem;
+    margin-right: 2.5rem;
+  }
+
+  &__column--date {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 350px;
+    min-width: 320px;
+  }
+
+  &__datetime {
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+    margin-right: 2.5rem;
+
+    &-title {
+      font-size: 0.87rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: $primary-light-2;
+    }
+  }
+
+  &__value {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  &__image {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+
+    &--left {
+      margin-right: 1.12rem;
+    }
+    &--right {
+      margin-left: 1.12rem;
+    }
+  }
+
+  &__vs {
+    width: 35px;
+    height: auto;
+    margin: 0 2rem;
+  }
+
+  &__winner-trophy {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 1.12rem;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
