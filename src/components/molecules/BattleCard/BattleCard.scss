@@ -1,0 +1,91 @@
+@import "../../../styles/variables";
+
+.battle-card {
+  margin: 100px;
+  display: flex;
+  column-gap: 2.5rem;
+  max-width: 518px;
+  padding: 2.5rem;
+  border: 2px solid $primary-light-2;
+  border-radius: $rounded-lg;
+  background-color: $white;
+
+  &__media {
+    flex: 1;
+    text-align: center;
+    img {
+      width: 192px;
+      height: 186px;
+      object-fit: contain;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__name {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: $grey-dark;
+  }
+
+  &__type {
+    font-size: 1.125rem;
+    line-height: 0.69;
+    font-weight: 400;
+    color: $grey-3;
+  }
+
+  &__stats {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+
+    &-header {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1;
+      color: $grey-dark;
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  &__stat {
+    &-info {
+      padding: 0 0.5rem;
+      border-top: 1px solid $grey-4;
+      border-bottom: 1px solid $grey-4;
+    }
+
+    &-value {
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: $grey-dark;
+      line-height: 2.2;
+    }
+  }
+
+  &__moves {
+    display: flex;
+    border-bottom: 1px solid $grey-4;
+    padding: 0.5rem;
+
+    &-list {
+      span {
+        display: inline-block;
+        color: $grey-5;
+        font-size: 1.125rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .stat-label {
+    min-width: 56px;
+    display: inline-block;
+    margin-right: 1rem;
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: $grey-3;
+  }
+}
