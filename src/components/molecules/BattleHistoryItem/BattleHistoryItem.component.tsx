@@ -3,6 +3,7 @@ import { BattleHistoryItemProps } from './BattleHistoryItem.type'
 import './BattleHistoryItem.scss'
 
 export const BattleHistoryItem: FC<BattleHistoryItemProps> = ({
+  id,
   battleDate,
   battleTime,
   winner,
@@ -11,7 +12,7 @@ export const BattleHistoryItem: FC<BattleHistoryItemProps> = ({
   return (
     <div className="battle-history-item">
       <div className="battle-history-item__column battle-history-item__column--date">
-        <span className="battle-history-item__index">1</span>
+        <span className="battle-history-item__index">{id}</span>
         <div className="battle-history-item__datetime">
           <span className="battle-history-item__datetime-title">Date</span>
           <span className="battle-history-item__value">{battleDate}</span>
