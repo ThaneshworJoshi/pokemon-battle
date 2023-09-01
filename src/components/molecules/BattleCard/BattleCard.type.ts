@@ -1,11 +1,11 @@
 export interface BattleCardProps {
-  name: string
-  type: string
-  hp: number
+  name?: string
+  type?: string
+  hp?: number
   isWinner?: boolean
   isLooser?: boolean
-  moves: string[]
-  media: {
+  moves?: string[]
+  media?: {
     imageUrl: string
     altText: string
   }

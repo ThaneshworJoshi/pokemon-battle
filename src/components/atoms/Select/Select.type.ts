@@ -1,6 +1,8 @@
 export interface SelectProps {
   fullWidth?: boolean
   styles?: any
-  items: string[]
+  value?: string
+  options: string[]
   label?: string
+  onChangeHandler: (event: string) => void
 }

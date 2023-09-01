@@ -12,11 +12,11 @@ const items = [
   'Snorlax',
   'Mewtwo',
   'Gengar',
-  'Dragonite'
+  'Dragonite',
 ]
 
 describe('Select Component', () => {
   it('renders correctly', () => {
-    render(<Select items={items} />)
+    render(<Select options={items} onChangeHandler={() => {}} />)
   })
 })

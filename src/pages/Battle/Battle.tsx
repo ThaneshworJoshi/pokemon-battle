@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BattleCard } from 'components/molecules'
 import './Battle.scss'
 import { Button, Select } from 'components/atoms'
+import { useAppDispatch, useAppSelector } from 'redux/hooks'
 
 const pokemons = [
   'Bulbasaur',
@@ -16,30 +17,22 @@ const pokemons = [
   'Dragonite',
 ]
 
-const mockPokemon1 = {
-  name: 'Blastoise',
-  type: 'Water',
-  hp: 267,
-  moves: ['Flash Cannon', 'Hyper Beam', 'Aqua Ring', 'Hydro Canon'],
-  media: {
-    imageUrl: './assets/pok1.png',
-    altText: 'alt-text',
-  },
-  isLooser: true,
-}
-
-const mockPokemon2 = {
-  name: 'Bulbasour',
-  type: 'Grass',
-  hp: 345,
-  moves: ['Razor Leaf', 'Seed Bomb', 'Solar Beam', 'Rock Smash'],
-  media: {
-    imageUrl: './assets/pok2.png',
-    altText: 'alt-text',
-  },
-  isWinner: true,
-}
 export const Battle = () => {
+  // const dispatch = useAppDispatch()
+  const { leftOpponent, rightOpponent } = useAppSelector(
+    (state) => state?.pokemon
+  )
+
+  const [leftPokemon, setLeftPokemon] = useState('')
+  const [rightPokemon, setRightPokemon] = useState('')
+
+  const onLeftPokemonChange = (pokemon: string) => {
+    setLeftPokemon(pokemon)
+  }
+
+  const onRightPokemonChange = (pokemon: string) => {
+    setRightPokemon(pokemon)
+  }
   return (
     <div className="container">
       <div className="battle">
@@ -48,23 +41,27 @@ export const Battle = () => {
         <div className="battle__box">
           <div className="battle__card-wrapper">
             <Select
-              items={pokemons}
+              options={pokemons}
+              value={leftPokemon}
               fullWidth={false}
-              label="Choose your second Pokemon"
+              label="Choose your first Pokemon"
+              onChangeHandler={onLeftPokemonChange}
             />
-            <BattleCard {...mockPokemon1} />
+            <BattleCard {...leftOpponent} />
           </div>
           <div className="battle__vs-img">
             <img src="./assets/vs.png" alt="vs alt" />
           </div>
           <div className="battle__card-wrapper">
             <Select
-              items={pokemons}
+              options={pokemons}
+              value={rightPokemon}
               fullWidth={false}
               label="Choose your second Pokemon"
+              onChangeHandler={onRightPokemonChange}
             />
 
-            <BattleCard {...mockPokemon2} />
+            <BattleCard {...rightOpponent} />
           </div>
         </div>
         <div className="battle__cta">

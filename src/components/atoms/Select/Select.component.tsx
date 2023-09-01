@@ -4,24 +4,25 @@ import { type SelectProps } from './Select.type'
 
 export const Select: FC<SelectProps> = ({
   fullWidth,
+  value,
   styles,
-  items,
+  options,
   label,
+  onChangeHandler,
 }) => {
-  const [filter, setFilter] = useState('')
   const [showList, setShowList] = useState(false)
-  const filteredItem = items.filter((pokemon) =>
-    pokemon.toLowerCase().includes(filter.toLowerCase())
+  const filteredItem = options.filter((pokemon) =>
+    pokemon.toLowerCase().includes(value?.toLowerCase() ?? '')
   )
 
   const handleItemClick = (item: string) => {
-    setFilter(item)
     setShowList(false)
+    onChangeHandler(item)
   }
 
-  const onChangeHandler = (event: any) => {
-    setFilter(event.target.value)
+  const onInputChangeHandler = (event: any) => {
     setShowList(true)
+    onChangeHandler(event.target.value)
   }
 
   return (
@@ -35,8 +36,8 @@ export const Select: FC<SelectProps> = ({
           type="text"
           className="search__input"
           placeholder="Search..."
-          value={filter}
-          onChange={onChangeHandler}
+          value={value}
+          onChange={onInputChangeHandler}
         />
         <button
           className="search__button"
@@ -49,16 +50,20 @@ export const Select: FC<SelectProps> = ({
       </div>
       {showList && (
         <ul className="select__list">
-          {filteredItem.map((item) => (
-            <li
-              onClick={() => {
-                handleItemClick(item)
-              }}
-              key={item}
-            >
-              {item}
-            </li>
-          ))}
+          {filteredItem.length ? (
+            filteredItem.map((item) => (
+              <li
+                onClick={() => {
+                  handleItemClick(item)
+                }}
+                key={item}
+              >
+                {item}
+              </li>
+            ))
+          ) : (
+            <li>No Option</li>
+          )}
         </ul>
       )}
     </div>

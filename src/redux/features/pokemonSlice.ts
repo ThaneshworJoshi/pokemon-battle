@@ -8,8 +8,28 @@ interface PokemonState {
 }
 
 const initialState: PokemonState = {
-    leftOpponent: null,
-    rightOpponent: null,
+    leftOpponent: {
+        name: 'Blastoise',
+        type: 'Water',
+        hp: 267,
+        moves: ['Flash Cannon', 'Hyper Beam', 'Aqua Ring', 'Hydro Canon'],
+        media: {
+            imageUrl: './assets/pok1.png',
+            altText: 'alt-text',
+        },
+        // isLooser: true,
+    },
+    rightOpponent: {
+        name: 'Bulbasour',
+        type: 'Grass',
+        hp: 345,
+        moves: ['Razor Leaf', 'Seed Bomb', 'Solar Beam', 'Rock Smash'],
+        media: {
+            imageUrl: './assets/pok2.png',
+            altText: 'alt-text',
+        },
+        // isWinner: true,
+    },
     battleHistory: []
 }
 

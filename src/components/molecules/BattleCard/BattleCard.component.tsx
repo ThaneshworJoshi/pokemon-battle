@@ -34,7 +34,7 @@ export const BattleCard: FC<BattleCardProps> = ({
         <div className="battle-card__moves">
           <span className="stat-label">Moves</span>
           <div className="battle-card__moves-list">
-            {moves.map((move, index) => (
+            {moves?.map((move, index) => (
               <span key={index}>{move}</span>
             ))}
           </div>
