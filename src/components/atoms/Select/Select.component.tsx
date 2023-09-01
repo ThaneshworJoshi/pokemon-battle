@@ -2,7 +2,12 @@ import React, { type FC, useState } from 'react'
 import './Select.scss'
 import { type SelectProps } from './Select.type'
 
-export const Select: FC<SelectProps> = ({ fullWidth, styles, items }) => {
+export const Select: FC<SelectProps> = ({
+  fullWidth,
+  styles,
+  items,
+  label,
+}) => {
   const [filter, setFilter] = useState('')
   const [showList, setShowList] = useState(false)
   const filteredItem = items.filter((pokemon) =>
@@ -21,6 +26,7 @@ export const Select: FC<SelectProps> = ({ fullWidth, styles, items }) => {
 
   return (
     <div className={`search ${fullWidth ? 'full-width' : ''}`} {...styles}>
+      {label && <p className="search__title">{label}</p>}
       <div className="search__input-container">
         <button className="search__button--left" disabled>
           <img src="./assets/ball.png" className="search__image--left" />
@@ -34,7 +40,9 @@ export const Select: FC<SelectProps> = ({ fullWidth, styles, items }) => {
         />
         <button
           className="search__button"
-          onClick={() => { setShowList(!showList) }}
+          onClick={() => {
+            setShowList(!showList)
+          }}
         >
           <img src="./assets/arrow.png" alt="Search" />
         </button>
@@ -42,7 +50,12 @@ export const Select: FC<SelectProps> = ({ fullWidth, styles, items }) => {
       {showList && (
         <ul className="select__list">
           {filteredItem.map((item) => (
-            <li onClick={() => { handleItemClick(item) }} key={item}>
+            <li
+              onClick={() => {
+                handleItemClick(item)
+              }}
+              key={item}
+            >
               {item}
             </li>
           ))}
