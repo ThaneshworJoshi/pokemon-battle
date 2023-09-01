@@ -7,10 +7,18 @@ export const BattleCard: FC<BattleCardProps> = ({
   type,
   hp,
   moves,
-  media
+  media,
+  isWinner,
+  isLooser,
 }) => {
   return (
     <div className="battle-card">
+      {isLooser && <div className="battle-card__looser"></div>}
+      {isWinner && (
+        <div className="battle-card__winner">
+          <img src="./assets/winner.png" alt="winner" />
+        </div>
+      )}
       <div className="battle-card__media">
         <img src={media?.imageUrl} alt={media?.altText} />
         <h3 className="battle-card__name">{name}</h3>

@@ -25,6 +25,7 @@ const mockPokemon1 = {
     imageUrl: './assets/pok1.png',
     altText: 'alt-text',
   },
+  isLooser: true,
 }
 
 const mockPokemon2 = {
@@ -36,6 +37,7 @@ const mockPokemon2 = {
     imageUrl: './assets/pok2.png',
     altText: 'alt-text',
   },
+  isWinner: true,
 }
 export const Battle = () => {
   return (

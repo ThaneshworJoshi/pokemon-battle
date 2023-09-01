@@ -5,9 +5,31 @@
   column-gap: 2.5rem;
   max-width: 518px;
   padding: 2.5rem;
-  border: 2px solid $primary-light-2;
+  border: 4px solid $primary-light-2;
   border-radius: $rounded-lg;
   background-color: $white;
+  position: relative;
+
+  &__looser {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba($background-color, 0.8);
+    border-radius: $rounded-sm;
+    // overflow: hidden;
+  }
+
+  &__winner {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+  }
 
   &__media {
     flex: 1;
