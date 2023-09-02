@@ -5,13 +5,20 @@ import { Button, Select } from 'components/atoms'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { useFetchPokemons } from 'hooks/api/useFetchPokemon'
 import { useFetchPokemonByName } from 'hooks/api/useFetchPokemonByName'
-import { addLeftOpponent, addRightOpponent } from 'redux/features/pokemonSlice'
+import {
+  addLeftOpponent,
+  addRightOpponent,
+  updateWinner,
+} from 'redux/features/pokemonSlice'
 import { showToast } from 'utils/toastUtils'
+import { simulateBattle } from 'utils/simulateBattle'
 
 export const Battle = () => {
   const dispatch = useAppDispatch()
   const [pokemons, setPokemons] = useState([])
+  const [battleResult, setBattleResult] = useState({})
   const [leftPokemon, setLeftPokemon] = useState('')
+  const [startBattle, setStartBattle] = useState(false)
   const [rightPokemon, setRightPokemon] = useState('')
   const [currentPokemonInfo, setCurrentPokemonInfo] = useState({
     name: '',
@@ -39,10 +46,24 @@ export const Battle = () => {
   }
 
   const handleBattleStart = () => {
+    if (startBattle) {
+      setBattleResult({})
+      setStartBattle(false)
+      setLeftPokemon('')
+      setRightPokemon('')
+      dispatch(updateWinner({}))
+      return
+    }
     if (!leftOpponent?.name || !rightOpponent?.name) {
       showToast('Please Select Pokemon', 'error')
+      return
     }
-    // console.log('first', leftOpponent, rightOpponent)
+    setStartBattle(true)
+
+    //@ts-ignore
+    const battleResult = simulateBattle(leftOpponent, rightOpponent)
+    setBattleResult(battleResult)
+    dispatch(updateWinner({ name: battleResult?.winner?.name, isWinner: true }))
   }
 
   useEffect(() => {
@@ -100,7 +121,7 @@ export const Battle = () => {
         </div>
         <div className="battle__cta">
           <Button size="big" onClick={handleBattleStart}>
-            Start Battle
+            {!startBattle ? 'Start Battle' : 'Reset'}
           </Button>
         </div>
       </div>

@@ -3,17 +3,13 @@ import { BattleHistoryItemProps, BattleCardProps } from 'components/molecules'
 
 interface PokemonState {
     battleHistory: BattleHistoryItemProps[]
-    leftOpponent?: BattleCardProps | null
-    rightOpponent?: BattleCardProps | null
+    leftOpponent?: BattleCardProps
+    rightOpponent?: BattleCardProps
 }
 
 const initialState: PokemonState = {
-    leftOpponent: {
-
-    },
-    rightOpponent: {
-
-    },
+    leftOpponent: {},
+    rightOpponent: {},
     battleHistory: []
 }
 
@@ -27,6 +23,21 @@ export const pokemonSlice = createSlice({
         addRightOpponent: (state, action: PayloadAction<BattleCardProps>) => {
             state.rightOpponent = action.payload;
         },
+        updateWinner: (state, action: PayloadAction<BattleCardProps>) => {
+            if (state.rightOpponent && state.leftOpponent && action.payload.name) {
+                if (state.leftOpponent?.name === action.payload.name && action.payload.isWinner) {
+                    state.leftOpponent.isWinner = true;
+                    state.rightOpponent.isLooser = true;
+                } else {
+                    state.leftOpponent.isLooser = true;
+                    state.rightOpponent.isWinner = true;
+                }
+            } else {
+                state.leftOpponent = {}
+                state.rightOpponent = {}
+            }
+        },
+
         addBattle: (state, action: PayloadAction<BattleHistoryItemProps>) => {
             state.battleHistory.push(action.payload)
         },
@@ -36,6 +47,6 @@ export const pokemonSlice = createSlice({
     }
 })
 
-export const { addLeftOpponent, addRightOpponent, addBattle } = pokemonSlice.actions
+export const { addLeftOpponent, addRightOpponent, addBattle, updateWinner } = pokemonSlice.actions
 
 export default pokemonSlice.reducer
