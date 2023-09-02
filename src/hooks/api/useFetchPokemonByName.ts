@@ -9,6 +9,9 @@ const fetchPokemonByName = (name: string) => {
             name: data?.name,
             type: data?.types?.[0]?.type?.name,
             hp: data?.stats?.[0]?.base_stat,
+            attack: data?.stats?.[1]?.base_stat,
+            defense: data?.stats?.[2]?.base_stat,
+            speed: data?.stats?.[5]?.base_stat,
             moves: data?.moves?.map((move: any) => move?.move?.name)?.slice(0, 4),
             media: {
                 imageUrl: data?.sprites?.other?.dream_world?.front_default,
