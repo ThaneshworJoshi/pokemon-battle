@@ -44,9 +44,12 @@ export const pokemonSlice = createSlice({
         loadBattleHistory: (state, action: PayloadAction<BattleHistoryItemProps[]>) => {
             state.battleHistory = action.payload
         },
+        addBattleHistory: (state, action: PayloadAction<BattleHistoryItemProps>) => {
+            state.battleHistory.push(action.payload)
+        }
     }
 })
 
-export const { addLeftOpponent, addRightOpponent, addBattle, updateWinner } = pokemonSlice.actions
+export const { addLeftOpponent, addRightOpponent, addBattle, addBattleHistory, updateWinner } = pokemonSlice.actions
 
 export default pokemonSlice.reducer

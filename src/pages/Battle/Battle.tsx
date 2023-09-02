@@ -6,17 +6,20 @@ import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { useFetchPokemons } from 'hooks/api/useFetchPokemon'
 import { useFetchPokemonByName } from 'hooks/api/useFetchPokemonByName'
 import {
+  addBattleHistory,
   addLeftOpponent,
   addRightOpponent,
   updateWinner,
 } from 'redux/features/pokemonSlice'
 import { showToast } from 'utils/toastUtils'
 import { simulateBattle } from 'utils/simulateBattle'
+import { getRandomId } from 'utils/helper'
+import { getCurrentDate, getCurrentTime } from 'utils/datetime'
+import { saveDataToLocalStorage } from 'utils/localStorageUtils'
 
 export const Battle = () => {
   const dispatch = useAppDispatch()
   const [pokemons, setPokemons] = useState([])
-  const [battleResult, setBattleResult] = useState({})
   const [leftPokemon, setLeftPokemon] = useState('')
   const [startBattle, setStartBattle] = useState(false)
   const [rightPokemon, setRightPokemon] = useState('')
@@ -47,7 +50,7 @@ export const Battle = () => {
 
   const handleBattleStart = () => {
     if (startBattle) {
-      setBattleResult({})
+      // setBattleResult({})
       setStartBattle(false)
       setLeftPokemon('')
       setRightPokemon('')
@@ -61,9 +64,18 @@ export const Battle = () => {
     setStartBattle(true)
 
     //@ts-ignore
-    const battleResult = simulateBattle(leftOpponent, rightOpponent)
-    setBattleResult(battleResult)
-    dispatch(updateWinner({ name: battleResult?.winner?.name, isWinner: true }))
+    const { winner, looser } = simulateBattle(leftOpponent, rightOpponent)
+    console.log(winner)
+    const battleInfo = {
+      id: getRandomId(),
+      battleDate: getCurrentDate(),
+      battleTime: getCurrentTime(),
+      winner: { name: winner.name, imageUrl: winner.media?.imageUrl },
+      pokemons: [winner, looser],
+    }
+    saveDataToLocalStorage(battleInfo)
+    dispatch(updateWinner({ name: winner?.name, isWinner: true }))
+    dispatch(addBattleHistory(battleInfo))
   }
 
   useEffect(() => {

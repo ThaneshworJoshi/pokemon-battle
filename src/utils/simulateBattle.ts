@@ -1,5 +1,7 @@
 // Pokemon.ts
 
+import { saveDataToLocalStorage } from "./localStorageUtils";
+
 // Define a Pokemon interface
 // interface Pokemon {
 //   name: string;
@@ -84,6 +86,7 @@ function applyDefenseReduction(pokemon: Pokemon, subBy: number): void {
 
 export function simulateBattle(pok1: Pokemon, pok2: Pokemon): any {
   let winner: Pokemon | null = null;
+  let looser: Pokemon | null = null;
   let rounds = 0;
   let pokemon1: Pokemon;
   let pokemon2: Pokemon;
@@ -110,6 +113,7 @@ export function simulateBattle(pok1: Pokemon, pok2: Pokemon): any {
     battleLog.push({ attacker: pokemon1.name, defender: pokemon2.name, damage: damage1 });
     if (pokemon2.hp <= 0) {
       winner = pokemon1;
+      looser = pokemon2;
       battleLog.push(`${pokemon2.name} fainted.`);
       break;
     }
@@ -122,10 +126,10 @@ export function simulateBattle(pok1: Pokemon, pok2: Pokemon): any {
     battleLog.push({ attacker: pokemon2.name, defender: pokemon1.name, damage: damage2 });
     if (pokemon1.hp <= 0) {
       winner = pokemon2;
+      looser = pokemon1;
       battleLog.push(`${pokemon1.name} fainted.`);
       break;
     }
   }
-
-  return { winner, battleLog }
+  return { winner, looser, battleLog }
 }

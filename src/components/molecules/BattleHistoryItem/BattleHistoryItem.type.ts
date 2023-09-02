@@ -1,7 +1,7 @@
 type TPokemon = { name: string, imageUrl: string }
 
 export interface BattleHistoryItemProps {
-    id?: number;
+    id?: string;
     battleDate: string;
     battleTime: string;
     winner: TPokemon;

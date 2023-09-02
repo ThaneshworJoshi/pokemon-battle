@@ -5,7 +5,7 @@ import { BattleHistory, BattleHistoryItemProps } from 'components'
 
 const mockBattleHistory: BattleHistoryItemProps[] = [
   {
-    id: 1,
+    id: '1',
     battleDate: '16 Mar 2023',
     battleTime: '3:00 PM',
     winner: { name: 'Pikachu', imageUrl: './assets/pok1.png' },
@@ -15,7 +15,7 @@ const mockBattleHistory: BattleHistoryItemProps[] = [
     ],
   },
   {
-    id: 2,
+    id: '2',
     battleDate: '2023-08-30',
     battleTime: '16:15:00',
     winner: { name: 'Squirtle', imageUrl: './assets/pok2.png' },
@@ -25,7 +25,7 @@ const mockBattleHistory: BattleHistoryItemProps[] = [
     ],
   },
   {
-    id: 3,
+    id: '3',
     battleDate: '2023-08-30',
     battleTime: '16:15:00',
     winner: { name: 'Squirtle', imageUrl: './assets/pok2.png' },
@@ -35,7 +35,7 @@ const mockBattleHistory: BattleHistoryItemProps[] = [
     ],
   },
   {
-    id: 4,
+    id: '4',
     battleDate: '2023-08-30',
     battleTime: '16:15:00',
     winner: { name: 'Squirtle', imageUrl: './assets/pok2.png' },
@@ -45,7 +45,7 @@ const mockBattleHistory: BattleHistoryItemProps[] = [
     ],
   },
   {
-    id: 5,
+    id: '5',
     battleDate: '2023-08-30',
     battleTime: '16:15:00',
     winner: { name: 'Squirtle', imageUrl: './assets/pok2.png' },
@@ -55,7 +55,7 @@ const mockBattleHistory: BattleHistoryItemProps[] = [
     ],
   },
   {
-    id: 6,
+    id: '6',
     battleDate: '2023-08-30',
     battleTime: '16:15:00',
     winner: { name: 'Squirtle', imageUrl: './assets/pok2.png' },
@@ -65,7 +65,7 @@ const mockBattleHistory: BattleHistoryItemProps[] = [
     ],
   },
   {
-    id: 7,
+    id: '7',
     battleDate: '2023-08-30',
     battleTime: '16:15:00',
     winner: { name: 'Squirtle', imageUrl: './assets/pok2.png' },
@@ -75,7 +75,7 @@ const mockBattleHistory: BattleHistoryItemProps[] = [
     ],
   },
   {
-    id: 8,
+    id: '8',
     battleDate: '2023-08-30',
     battleTime: '16:15:00',
     winner: { name: 'Squirtle', imageUrl: './assets/pok2.png' },
