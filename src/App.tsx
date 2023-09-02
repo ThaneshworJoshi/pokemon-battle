@@ -9,7 +9,17 @@ import './styles/main.scss'
 import { Provider } from 'react-redux'
 import store from 'redux/store'
 
-const queryClient = new QueryClient()
+export const oneHoursInMs = 1000 * 60 * 60 * 1
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      retry: true,
+      staleTime: oneHoursInMs,
+    },
+  },
+})
 
 function App() {
   return (

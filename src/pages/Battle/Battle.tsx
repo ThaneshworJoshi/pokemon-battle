@@ -1,30 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BattleCard } from 'components/molecules'
 import './Battle.scss'
 import { Button, Select } from 'components/atoms'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
-
-const pokemons = [
-  'Bulbasaur',
-  'Charmander',
-  'Squirtle',
-  'Pikachu',
-  'Eevee',
-  'Jigglypuff',
-  'Snorlax',
-  'Mewtwo',
-  'Gengar',
-  'Dragonite',
-]
+import { useFetchPokemons } from 'hooks/api/useFetchPokemon'
+import { useFetchPokemonByName } from 'hooks/api/useFetchPokemonByName'
+import { addLeftOpponent, addRightOpponent } from 'redux/features/pokemonSlice'
 
 export const Battle = () => {
-  // const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
+  const [pokemons, setPokemons] = useState([])
+  const [leftPokemon, setLeftPokemon] = useState('')
+  const [rightPokemon, setRightPokemon] = useState('')
+  const [currentPokemonInfo, setCurrentPokemonInfo] = useState({
+    name: '',
+    position: '',
+  })
+
+  const { status, data, isLoading, isError } = useFetchPokemons()
+
+  const {
+    status: pokemonStatus,
+    data: pokemonData,
+    isError: pokemonError,
+  } = useFetchPokemonByName(currentPokemonInfo?.name)
+
   const { leftOpponent, rightOpponent } = useAppSelector(
     (state) => state?.pokemon
   )
-
-  const [leftPokemon, setLeftPokemon] = useState('')
-  const [rightPokemon, setRightPokemon] = useState('')
 
   const onLeftPokemonChange = (pokemon: string) => {
     setLeftPokemon(pokemon)
@@ -33,6 +36,29 @@ export const Battle = () => {
   const onRightPokemonChange = (pokemon: string) => {
     setRightPokemon(pokemon)
   }
+
+  useEffect(() => {
+    if (status === 'success') {
+      const pokemons = data?.results?.map((pokemon: any) => pokemon.name)
+      setPokemons(pokemons)
+    }
+    if (pokemonStatus === 'success') {
+      if (currentPokemonInfo.position === 'left') {
+        dispatch(addLeftOpponent(pokemonData))
+      } else {
+        dispatch(addRightOpponent(pokemonData))
+      }
+    }
+  }, [status, pokemonStatus])
+
+  useEffect(() => {
+    setCurrentPokemonInfo({ name: leftPokemon, position: 'left' })
+  }, [leftPokemon])
+
+  useEffect(() => {
+    setCurrentPokemonInfo({ name: rightPokemon, position: 'right' })
+  }, [rightPokemon])
+
   return (
     <div className="container">
       <div className="battle">
