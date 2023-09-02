@@ -8,6 +8,8 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import './styles/main.scss'
 import { Provider } from 'react-redux'
 import store from 'redux/store'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export const oneHoursInMs = 1000 * 60 * 60 * 1
 const queryClient = new QueryClient({
@@ -36,6 +38,7 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
+        <ToastContainer position="bottom-left" limit={3} theme="colored" />
       </Provider>
     </QueryClientProvider>
   )

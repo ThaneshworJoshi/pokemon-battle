@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { useFetchPokemons } from 'hooks/api/useFetchPokemon'
 import { useFetchPokemonByName } from 'hooks/api/useFetchPokemonByName'
 import { addLeftOpponent, addRightOpponent } from 'redux/features/pokemonSlice'
+import { showToast } from 'utils/toastUtils'
 
 export const Battle = () => {
   const dispatch = useAppDispatch()
@@ -35,6 +36,13 @@ export const Battle = () => {
 
   const onRightPokemonChange = (pokemon: string) => {
     setRightPokemon(pokemon)
+  }
+
+  const handleBattleStart = () => {
+    if (!leftOpponent?.name || !rightOpponent?.name) {
+      showToast('Please Select Pokemon', 'error')
+    }
+    // console.log('first', leftOpponent, rightOpponent)
   }
 
   useEffect(() => {
@@ -91,7 +99,9 @@ export const Battle = () => {
           </div>
         </div>
         <div className="battle__cta">
-          <Button size="big">Start Battle</Button>
+          <Button size="big" onClick={handleBattleStart}>
+            Start Battle
+          </Button>
         </div>
       </div>
     </div>
