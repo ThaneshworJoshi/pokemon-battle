@@ -23,6 +23,10 @@ export const pokemonSlice = createSlice({
         addRightOpponent: (state, action: PayloadAction<BattleCardProps>) => {
             state.rightOpponent = action.payload;
         },
+        clearOpponents: (state) => {
+            state.leftOpponent = {};
+            state.rightOpponent = {};
+        },
         updateWinner: (state, action: PayloadAction<BattleCardProps>) => {
             if (state.rightOpponent && state.leftOpponent && action.payload.name) {
                 if (state.leftOpponent?.name === action.payload.name && action.payload.isWinner) {
@@ -50,6 +54,6 @@ export const pokemonSlice = createSlice({
     }
 })
 
-export const { addLeftOpponent, addRightOpponent, addBattle, addBattleHistory, updateWinner } = pokemonSlice.actions
+export const { addLeftOpponent, addRightOpponent, clearOpponents, addBattle, addBattleHistory, updateWinner, loadBattleHistory } = pokemonSlice.actions
 
 export default pokemonSlice.reducer

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BattleCard } from 'components/molecules'
+import { BattleCard, BattleHistoryItemProps } from 'components/molecules'
 import './Battle.scss'
 import { Button, Select } from 'components/atoms'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
@@ -9,6 +9,7 @@ import {
   addBattleHistory,
   addLeftOpponent,
   addRightOpponent,
+  clearOpponents,
   updateWinner,
 } from 'redux/features/pokemonSlice'
 import { showToast } from 'utils/toastUtils'
@@ -65,18 +66,27 @@ export const Battle = () => {
 
     //@ts-ignore
     const { winner, loser } = simulateBattle(leftOpponent, rightOpponent)
-    console.log(winner)
-    const battleInfo = {
+
+    const battleInfo: BattleHistoryItemProps = {
       id: getRandomId(),
       battleDate: getCurrentDate(),
       battleTime: getCurrentTime(),
       winner: { name: winner.name, imageUrl: winner.media?.imageUrl },
-      pokemons: [winner, loser],
+      pokemons: [
+        { name: winner.name, imageUrl: winner?.media?.imageUrl },
+        { name: loser.name, imageUrl: loser?.media?.imageUrl },
+      ],
     }
     saveDataToLocalStorage(battleInfo)
     dispatch(updateWinner({ name: winner?.name, isWinner: true }))
     dispatch(addBattleHistory(battleInfo))
   }
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearOpponents())
+    }
+  }, [])
 
   useEffect(() => {
     if (status === 'success') {

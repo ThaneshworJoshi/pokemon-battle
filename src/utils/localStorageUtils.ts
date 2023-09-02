@@ -27,7 +27,7 @@ export function saveDataToLocalStorage(dataToSave: any): void {
  * @param key The name of the key used to store data in local storage.
  * @returns The retrieved data or null if the key is not found or an error occurs.
  */
-function getDataFromLocalStorage(key: string): any | null {
+export function getDataFromLocalStorage(key: string): any | null {
     try {
         const dataJSON = localStorage.getItem(key);
         if (dataJSON === null) {
