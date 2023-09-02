@@ -1,6 +1,13 @@
 export const externalApiEndpoints = {
-  baseUrl: 'https://pokeapi.co/api/v2/'
+  baseUrl: 'https://pokeapi.co/api/v2',
+  pokemon: {
+    base: '/pokemon',
+    byId: '/pokemon/${id}',
+    byName: '/pokemon/${name}'
+  }
+
 }
+
 
 export const navLinks = [
   {
