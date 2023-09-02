@@ -3,7 +3,8 @@
 .battle-card {
   display: flex;
   column-gap: 2.5rem;
-  max-width: 518px;
+  min-width: 518px;
+  min-height: 350px;
   padding: 2.5rem;
   border: 4px solid $primary-light-2;
   border-radius: $rounded-lg;
@@ -108,5 +109,20 @@
     font-size: 1.125rem;
     font-weight: 300;
     color: $grey-3;
+  }
+}
+
+.select-card {
+  min-width: 518px;
+  height: 350px;
+  padding: 2rem;
+  border: 4px solid $primary-light-2;
+  border-radius: $rounded-lg;
+  background-color: $white;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 }

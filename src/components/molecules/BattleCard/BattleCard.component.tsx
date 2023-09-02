@@ -11,6 +11,13 @@ export const BattleCard: FC<BattleCardProps> = ({
   isWinner,
   isLooser,
 }) => {
+  if (!name) {
+    return (
+      <div className="select-card">
+        <img src="./assets/banner.png" alt="" />
+      </div>
+    )
+  }
   return (
     <div className="battle-card">
       {isLooser && <div className="battle-card__looser"></div>}

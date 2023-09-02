@@ -1,6 +1,14 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { externalApiEndpoints as ep } from "common/constant"
 
+/**
+ * API call utility function
+ *
+ * @param {string} baseURL
+ * @param {number} timeout
+ * @returns
+ */
+
 const http = (baseUrl: string = ep.baseUrl, timeout: number = 3000) => {
     const client: AxiosInstance = axios.create({
         baseURL: baseUrl, timeout
