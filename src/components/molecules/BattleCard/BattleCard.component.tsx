@@ -9,7 +9,7 @@ export const BattleCard: FC<BattleCardProps> = ({
   moves,
   media,
   isWinner,
-  isLooser,
+  isLoser,
 }) => {
   if (!name) {
     return (
@@ -20,7 +20,7 @@ export const BattleCard: FC<BattleCardProps> = ({
   }
   return (
     <div className="battle-card">
-      {isLooser && <div className="battle-card__looser"></div>}
+      {isLoser && <div className="battle-card__loser"></div>}
       {isWinner && (
         <div className="battle-card__winner">
           <img src="./assets/winner.png" alt="winner" />

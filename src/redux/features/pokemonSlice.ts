@@ -27,9 +27,9 @@ export const pokemonSlice = createSlice({
             if (state.rightOpponent && state.leftOpponent && action.payload.name) {
                 if (state.leftOpponent?.name === action.payload.name && action.payload.isWinner) {
                     state.leftOpponent.isWinner = true;
-                    state.rightOpponent.isLooser = true;
+                    state.rightOpponent.isLoser = true;
                 } else {
-                    state.leftOpponent.isLooser = true;
+                    state.leftOpponent.isLoser = true;
                     state.rightOpponent.isWinner = true;
                 }
             } else {

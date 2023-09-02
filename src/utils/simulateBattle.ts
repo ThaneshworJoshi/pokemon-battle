@@ -80,13 +80,19 @@ function calculateDamage(attacker: Pokemon, defender: Pokemon): number {
 }
 function applyDefenseReduction(pokemon: Pokemon, subBy: number): void {
   // Reduce the defense stat of the defending Pokémon
-  pokemon.defense -= subBy; // You can adjust the amount as needed
+  pokemon.defense -= subBy;
 }
 
-
+/**
+ * Simulates a battle between two Pokémon.
+ *
+ * @param {Pokemon} pok1 - The first Pokémon in the battle.
+ * @param {Pokemon} pok2 - The second Pokémon in the battle.
+ * @returns {object} An object containing the winner , loser and battle log.
+ */
 export function simulateBattle(pok1: Pokemon, pok2: Pokemon): any {
   let winner: Pokemon | null = null;
-  let looser: Pokemon | null = null;
+  let loser: Pokemon | null = null;
   let rounds = 0;
   let pokemon1: Pokemon;
   let pokemon2: Pokemon;
@@ -113,7 +119,7 @@ export function simulateBattle(pok1: Pokemon, pok2: Pokemon): any {
     battleLog.push({ attacker: pokemon1.name, defender: pokemon2.name, damage: damage1 });
     if (pokemon2.hp <= 0) {
       winner = pokemon1;
-      looser = pokemon2;
+      loser = pokemon2;
       battleLog.push(`${pokemon2.name} fainted.`);
       break;
     }
@@ -126,10 +132,10 @@ export function simulateBattle(pok1: Pokemon, pok2: Pokemon): any {
     battleLog.push({ attacker: pokemon2.name, defender: pokemon1.name, damage: damage2 });
     if (pokemon1.hp <= 0) {
       winner = pokemon2;
-      looser = pokemon1;
+      loser = pokemon1;
       battleLog.push(`${pokemon1.name} fainted.`);
       break;
     }
   }
-  return { winner, looser, battleLog }
+  return { winner, loser, battleLog }
 }

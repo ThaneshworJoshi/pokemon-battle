@@ -1,3 +1,7 @@
+/**
+ * Gets the current time in 12-hour format with AM or PM.
+ * @returns A string representing the current time.
+ */
 export function getCurrentTime() {
     const now = new Date();
 
@@ -11,6 +15,10 @@ export function getCurrentTime() {
     return timeString;
 }
 
+/**
+ * Gets the current date in the format "dd Mon yyyy" (e.g., "16 Mar 2023").
+ * @returns A string representing the current date.
+ */
 export function getCurrentDate(): string {
     const now = new Date();
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };

@@ -1,5 +1,12 @@
 import { toast } from 'react-toastify';
 
+/**
+ * Displays toast notifications using 'react-toastify'.
+ *
+ * @param {string} message - The message to display in the toast.
+ * @param {'success' | 'error' | 'warning' | 'info'}
+ * @returns {void}
+ */
 export const showToast = (message: string, type: 'success' | 'error' | 'warning' | 'info' = 'info'): void => {
     switch (type) {
         case 'success':

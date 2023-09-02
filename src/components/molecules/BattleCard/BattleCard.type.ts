@@ -6,7 +6,7 @@ export interface BattleCardProps {
   defence?: number
   speed?: number
   isWinner?: boolean
-  isLooser?: boolean
+  isLoser?: boolean
   moves?: string[]
   media?: {
     imageUrl: string

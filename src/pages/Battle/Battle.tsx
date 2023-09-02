@@ -64,14 +64,14 @@ export const Battle = () => {
     setStartBattle(true)
 
     //@ts-ignore
-    const { winner, looser } = simulateBattle(leftOpponent, rightOpponent)
+    const { winner, loser } = simulateBattle(leftOpponent, rightOpponent)
     console.log(winner)
     const battleInfo = {
       id: getRandomId(),
       battleDate: getCurrentDate(),
       battleTime: getCurrentTime(),
       winner: { name: winner.name, imageUrl: winner.media?.imageUrl },
-      pokemons: [winner, looser],
+      pokemons: [winner, loser],
     }
     saveDataToLocalStorage(battleInfo)
     dispatch(updateWinner({ name: winner?.name, isWinner: true }))
