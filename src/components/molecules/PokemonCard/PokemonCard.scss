@@ -1,0 +1,44 @@
+@import '../../../styles/variables';
+
+.pokemon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 235px;
+  padding: 24px;
+  border: 4px solid $primary-light-2;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  &__image-wrapper {
+    width: 160px;
+    height: 160px;
+
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+    }
+  }
+
+  &__info {
+    text-align: center;
+  }
+
+  &__name {
+    margin-top: 8px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  &__type {
+    font-weight: 400;
+    font-size: 18px;
+  }
+}
