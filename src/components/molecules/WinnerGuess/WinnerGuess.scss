@@ -1,0 +1,33 @@
+.guess-winner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+
+  &__title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__columns {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 30px;
+    width: 100%;
+  }
+
+  &__column {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    margin: 0 8px;
+  }
+
+  &__sub-title {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+}
