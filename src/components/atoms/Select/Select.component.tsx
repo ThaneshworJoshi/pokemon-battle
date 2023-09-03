@@ -1,4 +1,4 @@
-import React, { type FC, useState } from 'react'
+import React, { type FC, useState, useRef, useEffect } from 'react'
 import './Select.scss'
 import { type SelectProps } from './Select.type'
 
@@ -11,6 +11,8 @@ export const Select: FC<SelectProps> = ({
   onChangeHandler,
 }) => {
   const [showList, setShowList] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement | null>(null)
+
   const filteredItem = options.filter((pokemon) =>
     pokemon.toLowerCase().includes(value?.toLowerCase() ?? '')
   )
@@ -25,8 +27,31 @@ export const Select: FC<SelectProps> = ({
     onChangeHandler(event.target.value)
   }
 
+  // Function to handle clicks outside the dropdown
+  const handleClickOutside = (e: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(e.target as Node)
+    ) {
+      setShowList(false)
+    }
+  }
+
+  // Attach click event listener when the component mounts
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      // Remove the event listener when the component unmounts
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
   return (
-    <div className={`search ${fullWidth ? 'full-width' : ''}`} {...styles}>
+    <div
+      className={`search ${fullWidth ? 'full-width' : ''}`}
+      {...styles}
+      ref={dropdownRef}
+    >
       {label && <p className="search__title">{label}</p>}
       <div className="search__input-container">
         <button className="search__button--left" disabled>
