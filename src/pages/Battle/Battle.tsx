@@ -37,7 +37,7 @@ export const Battle = () => {
     position: '',
   })
 
-  const { status, data, isLoading, isError } = useFetchPokemons()
+  const { status, data, isLoading, isError } = useFetchPokemons({ limit: 200 })
 
   const {
     status: pokemonStatus,
