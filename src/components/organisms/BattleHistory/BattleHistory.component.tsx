@@ -15,7 +15,11 @@ export const BattleHistory: FC<BattleHistoryProps> = ({
       <div className="battle-history__list">
         {battleHistoryList?.map((item, index) => (
           <div key={item.id} className="battle-history__list-item">
-            <BattleHistoryItem {...item} key={index} />
+            <BattleHistoryItem
+              {...item}
+              key={item?.id}
+              id={(index + 1)?.toString()}
+            />
           </div>
         ))}
       </div>
