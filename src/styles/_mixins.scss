@@ -1,3 +1,5 @@
+@import './variables';
+
 // Centering a Flex Container
 @mixin center-vertically {
   display: flex;
@@ -7,4 +9,21 @@
 @mixin center-horizontally {
   display: flex;
   justify-content: center;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'mobile' {
+    @media (max-width: $mobile) {
+      @content;
+    }
+  } @else if $breakpoint == 'tablet' {
+    // @media (min-width: $mobile) and (max-width: $tablet) {
+    @media (max-width: $tablet) {
+      @content;
+    }
+  } @else if $breakpoint == 'desktop' {
+    @media (min-width: $desktop) {
+      @content;
+    }
+  }
 }
