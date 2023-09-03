@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { BattleCard, BattleHistoryItemProps } from 'components/molecules'
+import {
+  BattleCard,
+  BattleHistoryItemProps,
+  WinnerGuess,
+} from 'components/molecules'
 import './Battle.scss'
 import { Button, Select } from 'components/atoms'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
@@ -18,9 +22,12 @@ import { getRandomId } from 'utils/helper'
 import { getCurrentDate, getCurrentTime } from 'utils/datetime'
 import { saveDataToLocalStorage } from 'utils/localStorageUtils'
 import { debounce } from 'utils/debounce'
+import { Modal } from 'components/molecules'
 
 export const Battle = () => {
   const dispatch = useAppDispatch()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [guessWinner, setGuessWinner] = useState('')
   const [pokemons, setPokemons] = useState([])
   const [leftPokemon, setLeftPokemon] = useState('')
   const [rightPokemon, setRightPokemon] = useState('')
@@ -72,11 +79,12 @@ export const Battle = () => {
       setStartBattle(false)
       setLeftPokemon('')
       setRightPokemon('')
+      setGuessWinner('')
       dispatch(updateWinner({}))
       return
     }
     if (!leftOpponent?.name || !rightOpponent?.name) {
-      showToast('Please Select Pokemon', 'error')
+      showToast('Please Select Both Pokemons', 'error')
       return
     }
     setStartBattle(true)
@@ -93,12 +101,26 @@ export const Battle = () => {
         { name: winner.name, imageUrl: winner?.media?.imageUrl },
         { name: loser.name, imageUrl: loser?.media?.imageUrl },
       ],
+      userHasWon: guessWinner === winner?.name,
     }
     // Save battle info to local storage
     saveDataToLocalStorage(battleInfo)
     // Dispatch the winner and battle history
     dispatch(updateWinner({ name: winner?.name, isWinner: true }))
     dispatch(addBattleHistory(battleInfo))
+  }
+
+  const guessWinnerHandler = (pokemonName: string) => {
+    setIsModalOpen(false)
+    setGuessWinner(pokemonName)
+  }
+
+  const onGuessWinnerClick = () => {
+    if (!leftOpponent?.name || !rightOpponent?.name) {
+      showToast('Please Select Both Pokemons', 'error')
+      return
+    }
+    setIsModalOpen(true)
   }
 
   // Clear opponents from Redux store when unmounting the component
@@ -165,11 +187,29 @@ export const Battle = () => {
           </div>
         </div>
         <div className="battle__cta">
-          <Button size="big" onClick={handleBattleStart}>
-            {!startBattle ? 'Start Battle' : 'Reset'}
-          </Button>
+          {guessWinner && (
+            <Button size="big" onClick={handleBattleStart}>
+              {!startBattle ? 'Start Battle' : 'Reset'}
+            </Button>
+          )}
+          {!guessWinner && (
+            <Button size="big" onClick={onGuessWinnerClick}>
+              Guess Winner
+            </Button>
+          )}
         </div>
       </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false)
+        }}
+      >
+        <WinnerGuess
+          guessWinnerHandler={guessWinnerHandler}
+          pokemons={{ leftPokemon, rightPokemon }}
+        />
+      </Modal>
     </div>
   )
 }

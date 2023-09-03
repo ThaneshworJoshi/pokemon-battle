@@ -6,4 +6,5 @@ export interface BattleHistoryItemProps {
     battleTime: string;
     winner: TPokemon;
     pokemons: TPokemon[];
+    userHasWon?: boolean;
 }
