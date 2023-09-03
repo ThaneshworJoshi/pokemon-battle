@@ -28,9 +28,21 @@ export const BattleHistoryItem: FC<BattleHistoryItemProps> = ({
           alt={pokemons?.[0].imageUrl}
           className="battle-history-item__image battle-history-item__image--left"
         />
-        <p className="battle-history-item__value">{pokemons?.[0]?.name}</p>
+        <p
+          className={`battle-history-item__value ${
+            winner?.name === pokemons?.[0]?.name && 'win'
+          }`}
+        >
+          {pokemons?.[0]?.name}
+        </p>
         <img src="./assets/vs.png" className="battle-history-item__vs" />
-        <p className="battle-history-item__value">{pokemons?.[1]?.name}</p>
+        <p
+          className={`battle-history-item__value ${
+            winner?.name === pokemons?.[1]?.name && 'win'
+          }`}
+        >
+          {pokemons?.[1]?.name}
+        </p>
         <img
           src={pokemons?.[1].imageUrl}
           alt={pokemons?.[1].imageUrl}

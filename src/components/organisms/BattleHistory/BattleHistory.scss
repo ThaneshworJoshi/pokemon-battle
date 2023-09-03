@@ -3,6 +3,25 @@
 .battle-history {
   margin: 40px auto 0 auto;
 
+  &__info {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    padding: 10px;
+    color: $white;
+    &-box {
+      display: inline-block;
+      width: 35px;
+      height: 5px;
+      background-color: yellowgreen;
+      margin-right: 10px;
+    }
+
+    &-box:nth-child(2) {
+      background-color: red;
+    }
+  }
+
   &__title {
     color: $white;
     font-weight: 400;

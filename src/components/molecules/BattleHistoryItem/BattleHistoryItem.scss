@@ -106,4 +106,15 @@
       object-fit: cover;
     }
   }
+
+  &__result {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+  }
+}
+
+.win {
+  border-bottom: 3px solid yellowgreen;
 }

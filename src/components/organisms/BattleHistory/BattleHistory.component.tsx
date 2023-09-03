@@ -11,7 +11,9 @@ export const BattleHistory: FC<BattleHistoryProps> = ({
       <div className="battle-history__title">
         Battle History <span>{battleHistoryList.length} battles</span>
       </div>
-
+      <div className="battle-history__info">
+        <div className="battle-history__info-box" /> User Choosen
+      </div>
       <div className="battle-history__list">
         {battleHistoryList?.map((item, index) => (
           <div key={item.id} className="battle-history__list-item">
