@@ -5,10 +5,11 @@ import './Button.scss'
 export const Button: FC<ButtonProps> = ({
   children,
   onClick,
-  size = 'medium'
+  size = 'medium',
+  ...rest
 }) => {
   return (
-    <button onClick={onClick} className={`button ${size}`}>
+    <button onClick={onClick} className={`button ${size}`} {...rest}>
       {children}
     </button>
   )
