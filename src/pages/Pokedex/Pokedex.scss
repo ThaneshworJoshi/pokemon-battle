@@ -1,0 +1,42 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.pokedex {
+  max-width: 1280px;
+  margin: 40px auto 0 auto;
+
+  &__title {
+    color: $white;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 0.8;
+    margin-bottom: 24px;
+
+    span {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #9ecdff;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 2px solid #5295de;
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    min-height: 544px;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    margin-top: 20px;
+  }
+}

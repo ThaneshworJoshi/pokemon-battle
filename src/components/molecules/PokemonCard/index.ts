@@ -1,2 +1,2 @@
 export * from './PokemonCard.component'
-export * from './PolemonCard.type'
+export * from './PokemonCard.type'
