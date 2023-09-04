@@ -5,6 +5,7 @@ Task To Be Done:
    2. Show health progress bar
    3. Add Search feature in pokedex page
    4. Add about page
+   5.  Responsive Design
 
 # Frontend Architecture Document:
 
@@ -19,6 +20,7 @@ Task To Be Done:
     3. Prettier: For code formatting
     4. RTK: For state management
     5. Axios: For API requests
+    
 
 
 ## Project installation
@@ -35,12 +37,9 @@ Task To Be Done:
 
         yarn start
 
-### Screen Shot
+<br>
 
-![Alt text](./public/ss.png)
-
-
-### Pokemon Battle Pseudocode
+### Pokemon Battle Algorithm
 
     // Define two Pokémon and their attributes
     pokemon1 = {
@@ -70,11 +69,9 @@ Task To Be Done:
     // Pokémon 1's turn
 
     damage1 = pokemon1.attack - pokemon2.defense
-    if damage1 < 0 {
-        damage1 = 0
-    }
+  
     pokemon2.health -= damage1
-
+    // Reduce defense of defending Pokemon
     print "Pokemon 1 attacks! Pokemon 2 loses " + damage1 + " HP."
 
     // Check if Pokémon 2 fainted
@@ -85,10 +82,9 @@ Task To Be Done:
 
     // Pokémon 2's turn
     damage2 = pokemon2.attack - pokemon1.defense
-    if damage2 < 0 {
-        damage2 = 0
-    }
+
     pokemon1.health -= damage2
+    // Reduce defense of defending Pokemon
     print "Pokemon 2 attacks! Pokemon 1 loses " + damage2 + " HP."
 
     // Check if Pokémon 1 fainted
