@@ -8,6 +8,7 @@ export const BattleHistoryItem: FC<BattleHistoryItemProps> = ({
   battleTime,
   winner,
   pokemons,
+  userGuess,
 }) => {
   return (
     <div className="battle-history-item">
@@ -30,7 +31,7 @@ export const BattleHistoryItem: FC<BattleHistoryItemProps> = ({
         />
         <p
           className={`battle-history-item__value ${
-            winner?.name === pokemons?.[0]?.name && 'win'
+            userGuess === pokemons?.[0]?.name && 'user-guess'
           }`}
         >
           {pokemons?.[0]?.name}
@@ -38,7 +39,7 @@ export const BattleHistoryItem: FC<BattleHistoryItemProps> = ({
         <img src="./assets/vs.png" className="battle-history-item__vs" />
         <p
           className={`battle-history-item__value ${
-            winner?.name === pokemons?.[1]?.name && 'win'
+            userGuess === pokemons?.[1]?.name && 'user-guess'
           }`}
         >
           {pokemons?.[1]?.name}

@@ -101,7 +101,7 @@ export const Battle = () => {
         { name: winner.name, imageUrl: winner?.media?.imageUrl },
         { name: loser.name, imageUrl: loser?.media?.imageUrl },
       ],
-      userHasWon: guessWinner === winner?.name,
+      userGuess: guessWinner,
     }
     // Save battle info to local storage
     saveDataToLocalStorage(battleInfo)
