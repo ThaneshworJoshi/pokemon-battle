@@ -14,7 +14,7 @@ describe('Modal Component', () => {
     expect(getByText('Modal Content')).toBeInTheDocument()
 
     // Check if the close button is present
-    expect(queryByText('×')).toBeInTheDocument()
+    expect(queryByText('x')).toBeInTheDocument()
   })
 
   it('should not render the modal when isOpen is false', () => {

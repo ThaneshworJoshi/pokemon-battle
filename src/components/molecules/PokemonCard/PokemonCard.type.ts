@@ -3,7 +3,7 @@ export interface PokemonCardProps {
   name: string
   type: string
   url?: string
-  media: {
+  media?: {
     imageUrl: string
     altText: string
   }

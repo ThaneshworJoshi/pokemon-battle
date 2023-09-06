@@ -6,10 +6,7 @@ describe('PokemonCard component', () => {
   const mockPokemon = {
     name: 'Pikachu',
     type: 'Electric',
-    media: {
-      imageUrl: 'pikachu.jpg',
-      altText: 'alt',
-    },
+    url: 'https://pokeapi.co/api/v2/pokemon/11/',
   }
 
   it('renders the Pokemon name', () => {
@@ -22,6 +19,9 @@ describe('PokemonCard component', () => {
     render(<PokemonCard {...mockPokemon} />)
     const imageElement = screen.getByAltText(mockPokemon.name)
     expect(imageElement).toBeInTheDocument()
-    expect(imageElement).toHaveAttribute('src', mockPokemon.media?.imageUrl)
+    expect(imageElement).toHaveAttribute(
+      'src',
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/11.svg'
+    )
   })
 })

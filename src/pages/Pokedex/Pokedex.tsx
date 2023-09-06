@@ -18,7 +18,6 @@ export const Pokedex = () => {
       setOffSet(nextOffSet)
     }
   }
-
   return (
     <div className="pokedex">
       <div className="pokedex__title">
