@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixins';
 
 .nav {
   &__list {
@@ -6,6 +7,7 @@
     padding: 0;
     margin: 0;
     display: flex;
+    z-index: 100;
   }
 
   &__item {
@@ -27,10 +29,73 @@
       width: 18px;
       height: 18px;
       margin-right: 8px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
     &-label {
       font-size: 21px;
       font-weight: 400;
+    }
+  }
+
+  &__toggle-btn {
+    display: none;
+  }
+
+  @include respond-to('tablet') {
+    &__list {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50%;
+      background-color: #fff;
+      transition: transform 0.4s;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid $grey-4;
+      border-radius: 10px;
+      padding-top: 70px;
+    }
+
+    &__item {
+      padding: 20px;
+      margin: 0;
+    }
+
+    &__toggle-btn {
+      display: block;
+      border: none;
+      outline: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    &__close-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    &__toggle-img {
+      width: 60px;
+      height: 60px;
+    }
+    .visible {
+      transform: translateX(100%);
+    }
+
+    .hidden {
+      transform: translateX(0%);
+    }
+  }
+
+  @include respond-to('mobile') {
+    &__list {
+      width: 80%;
     }
   }
 

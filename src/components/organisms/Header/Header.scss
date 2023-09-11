@@ -9,10 +9,4 @@
   border-radius: $rounded-xl;
   background-color: $white;
   max-width: $xl-desktop;
-
-  @include respond-to('tablet') {
-    .nav {
-      display: none;
-    }
-  }
 }
