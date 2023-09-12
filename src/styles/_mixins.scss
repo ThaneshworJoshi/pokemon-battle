@@ -16,13 +16,21 @@
     @media (max-width: $mobile) {
       @content;
     }
+  } @else if $breakpoint == 'mobile-landscape' {
+    @media (max-width: $mobile-landscape) {
+      @content;
+    }
   } @else if $breakpoint == 'tablet' {
     // @media (min-width: $mobile) and (max-width: $tablet) {
     @media (max-width: $tablet) {
       @content;
     }
   } @else if $breakpoint == 'desktop' {
-    @media (min-width: $desktop) {
+    @media (max-width: $desktop) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl-desktop' {
+    @media (min-width: $xl-desktop) {
       @content;
     }
   }
