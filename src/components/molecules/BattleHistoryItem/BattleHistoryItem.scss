@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixins';
 
 .battle-history-item {
   display: flex;
@@ -54,13 +55,13 @@
     display: flex;
     justify-content: space-between;
     flex-basis: 350px;
-    min-width: 320px;
+    max-width: 320px;
   }
 
   &__datetime {
     display: flex;
     flex-direction: column;
-    min-width: 120px;
+    max-width: 120px;
     margin-right: 2.5rem;
 
     &-title {
@@ -113,6 +114,81 @@
     height: 15px;
     margin-right: 10px;
   }
+
+  @include respond-to('tablet') {
+    &__index {
+      display: inline-block;
+      padding-right: 0.6rem;
+      margin: 0;
+    }
+
+    &__name {
+      display: none;
+    }
+
+    &__image {
+      width: 45px;
+      height: 45px;
+    }
+
+    &__vs {
+      margin: 0;
+    }
+  }
+
+  @include respond-to('mobile-landscape') {
+    &__column--winner {
+      display: none;
+    }
+
+    &__column {
+      &--pokemon {
+        &::after {
+          content: '';
+          display: none;
+        }
+      }
+    }
+
+    &__time {
+      display: none;
+    }
+
+    &__value {
+      font-size: 0.7rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    &__image {
+      width: 35px;
+      height: 35px;
+    }
+
+    .winner-img {
+      display: block;
+      position: absolute;
+      left: 15%;
+      top: 0;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @include respond-to('desktop') {
+    &__name {
+      display: none;
+    }
+
+    .user-guess__img {
+      padding-bottom: 3px;
+      border-bottom: 3px solid yellowgreen;
+    }
+  }
+}
+
+.winner-img {
+  display: none;
 }
 
 .user-guess {
