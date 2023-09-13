@@ -4,6 +4,7 @@
 .container {
   margin-top: 4rem;
 }
+
 .battle {
   max-width: $desktop;
   margin: 0 auto;
@@ -24,16 +25,44 @@
 
   &__card-wrapper {
     max-width: 519px;
+    min-width: 470px;
+    flex: 1;
   }
 
   &__vs-img {
     align-self: flex-end;
     margin-bottom: 80px;
     width: 107px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 
   &__cta {
     text-align: center;
+  }
+
+  @include respond-to('tablet') {
+    &__box {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @include respond-to('desktop') {
+    &__card-wrapper {
+      max-width: 480px;
+      min-width: 350px;
+    }
+
+    &__vs-img {
+      width: 80px;
+      align-self: center;
+      margin-bottom: 0;
+    }
   }
 }
 

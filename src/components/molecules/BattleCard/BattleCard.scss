@@ -1,9 +1,11 @@
+@import '../../../styles/mixins';
 @import '../../../styles/variables';
 
 .battle-card {
   display: flex;
   column-gap: 2.5rem;
-  min-width: 518px;
+  max-width: 518px;
+  min-width: 470px;
   min-height: 350px;
   padding: 2.5rem;
   border: 4px solid $primary-light-2;
@@ -110,10 +112,70 @@
     font-weight: 300;
     color: $grey-3;
   }
+
+  @include respond-to('desktop') {
+    max-width: 480px;
+    min-width: 350px;
+    column-gap: 1.5rem;
+    flex-direction: column;
+
+    &__media {
+      img {
+        width: 150px;
+        height: 140px;
+        margin-bottom: 1.5rem;
+      }
+      display: flex;
+      flex: 1;
+      gap: 30px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__name {
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    &__type {
+      font-size: 1rem;
+    }
+
+    &__stats {
+      row-gap: 0.5rem;
+
+      &-header {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    &__stat {
+      &-value {
+        font-size: 1rem;
+        line-height: 1;
+      }
+    }
+
+    &__moves {
+      &-list {
+        span {
+          font-size: 1rem;
+          display: block;
+        }
+      }
+    }
+  }
+
+  @include respond-to('tablet') {
+    max-width: 480px;
+    min-width: 350px;
+  }
 }
 
 .select-card {
-  min-width: 518px;
+  max-width: 518px;
+  min-width: 470px;
   height: 350px;
   padding: 2rem;
   border: 4px solid $primary-light-2;
@@ -124,5 +186,10 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  @include respond-to('desktop') {
+    max-width: 480px;
+    min-width: 350px;
   }
 }

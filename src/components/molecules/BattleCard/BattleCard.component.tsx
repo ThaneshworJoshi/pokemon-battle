@@ -28,8 +28,10 @@ export const BattleCard: FC<BattleCardProps> = ({
       )}
       <div className="battle-card__media">
         <img src={media?.imageUrl} alt={media?.altText} />
-        <h3 className="battle-card__name">{name}</h3>
-        <p className="battle-card__type">{type}</p>
+        <div>
+          <h3 className="battle-card__name">{name}</h3>
+          <p className="battle-card__type">{type}</p>
+        </div>
       </div>
       <div className="battle-card__stats">
         <h5 className="battle-card__stats-header">Pokemon stats</h5>
